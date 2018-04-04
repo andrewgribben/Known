@@ -70,3 +70,9 @@
 	path = IdnoPlugins/InstagramShim
 	url = git@github.com:andrewgribben/KnownInstagramShim.git
 	branch = origin/master
+[submodule "IdnoPlugins/Recipe"]
+	path = IdnoPlugins/Recipe
+	url = git@github.com:andrewgribben/Known-Recipes.git
+[submodule "IdnoPlugins/Review"]
+	path = IdnoPlugins/Review
+	url = git@github.com:andrewgribben/Known-Reviews.git
