@@ -26,7 +26,6 @@ config.ini
 tests/_output/*
 *-ori.*
 
-IdnoPlugins/*
 !IdnoPlugins/APITester/
 !IdnoPlugins/Bridgy/
 !IdnoPlugins/Checkin/
