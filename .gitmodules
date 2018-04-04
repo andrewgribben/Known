@@ -50,10 +50,6 @@
 	path = IdnoPlugins/SoundCloud
 	url = git@github.com:andrewgribben/SoundCloud.git
 	branch = origin/master
-[submodule "IdnoPlugins/Markdown"]
-	path = IdnoPlugins/Markdown
-	url = git@github.com:andrewgribben/IdnoMarkdown.git
-	branch = origin/master
 [submodule "IdnoPlugins/Gist"]
 	path = IdnoPlugins/Gist
 	url = git@github.com:andrewgribben/IdnoGist.git
