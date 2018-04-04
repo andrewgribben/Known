@@ -1,0 +1,54 @@
+[submodule "IdnoPlugins/CleverCustomize"]
+	path = IdnoPlugins/CleverCustomize
+	url = git@github.com:andrewgribben/CleverCustomize.git
+[submodule "IdnoPlugins/Read"]
+	path = IdnoPlugins/Read
+	url = git@github.com:andrewgribben/Known-Read.git
+[submodule "IdnoPlugins/Reactions"]
+	path = IdnoPlugins/Reactions
+	url = git@github.com:andrewgribben/KnownReactions.git
+[submodule "IdnoPlugins/Twitter"]
+	path = IdnoPlugins/Twitter
+	url = git@github.com:andrewgribben/Twitter.git
+[submodule "IdnoPlugins/Github"]
+	path = IdnoPlugins/Github
+	url = git@github.com:andrewgribben/KnownGithub.git
+[submodule "IdnoPlugins/Watching"]
+	path = IdnoPlugins/Watching
+	url = git@github.com:andrewgribben/Known-Watching.git
+[submodule "IdnoPlugins/Reviews"]
+	path = IdnoPlugins/Reviews
+	url = git@github.com:andrewgribben/Known-Reviews.git
+[submodule "IdnoPlugins/Food"]
+	path = IdnoPlugins/Food
+	url = git@github.com:andrewgribben/Known-Food.git
+[submodule "IdnoPlugins/shortprofile"]
+	path = IdnoPlugins/shortprofile
+	url = git@github.com:andrewgribben/known-shortprofile.git
+[submodule "IdnoPlugins/Video"]
+	path = IdnoPlugins/Video
+	url = git@github.com:andrewgribben/withknownVideo.git
+[submodule "IdnoPlugins/S3"]
+	path = IdnoPlugins/S3
+	url = git@github.com:andrewgribben/S3.git
+[submodule "IdnoPlugins/IndieSyndicate"]
+	path = IdnoPlugins/IndieSyndicate
+	url = git@github.com:andrewgribben/KnownIndieSyndicate.git
+[submodule "IdnoPlugins/Journal"]
+	path = IdnoPlugins/Journal
+	url = git@github.com:andrewgribben/KnownJournal.git
+[submodule "IdnoPlugins/SoundCloud"]
+	path = IdnoPlugins/SoundCloud
+	url = git@github.com:andrewgribben/SoundCloud.git
+[submodule "IdnoPlugins/Recipes"]
+	path = IdnoPlugins/Recipes
+	url = git@github.com:andrewgribben/Known-Recipes.git
+[submodule "IdnoPlugins/Markdown"]
+	path = IdnoPlugins/Markdown
+	url = git@github.com:andrewgribben/IdnoMarkdown.git
+[submodule "IdnoPlugins/Gist"]
+	path = IdnoPlugins/Gist
+	url = git@github.com:andrewgribben/IdnoGist.git
+[submodule "IdnoPlugins/InstagramShim"]
+	path = IdnoPlugins/InstagramShim
+	url = git@github.com:andrewgribben/KnownInstagramShim.git
