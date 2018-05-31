@@ -97,9 +97,10 @@
             /**
              * Draws the page shell.
              * @param bool $echo
+             * @param $shell Optional override of the page shell template to be used
              * @return false|string
              */
-            function drawPage($echo = true)
+            function drawPage($echo = true, $shell = 'shell')
             {
 
                 // Get messages and flush session
@@ -108,7 +109,7 @@
                 // End session BEFORE we output any data
                 session_write_close();
 
-                return parent::drawPage($echo);
+                return parent::drawPage($echo, $shell);
 
             }
 
@@ -309,6 +310,9 @@
                     }
 
                     $result = "<a href=\"$url\"";
+                    if (!\Idno\Common\Entity::isLocalUUID($url)) {
+                        $result .= " target=\"_blank\" ";
+                    }
                     if ($code) {
                         $result .= ' ' . str_replace("%URL%", $url, addslashes($code));
                     }
@@ -494,10 +498,10 @@
 
                             // Find and replace twitter
                             if (strpos($in_reply_to, 'twitter.com') !== false) {
-                                return '<a href="https://twitter.com/' . urlencode(ltrim($matches[1], '@')) . '" >' . $url . '</a>';
+                                return '<a href="https://twitter.com/' . urlencode(ltrim($matches[1], '@')) . '" target="_blank">' . $url . '</a>';
                             // Activate github
                             } else if (strpos($in_reply_to, 'github.com') !== false) {
-                                return '<a href="https://github.com/' . urlencode(ltrim($matches[1], '@')) . '" >' . $url . '</a>';
+                                return '<a href="https://github.com/' . urlencode(ltrim($matches[1], '@')) . '" target="_blank">' . $url . '</a>';
                             } else {
                                 return \Idno\Core\Idno::site()->triggerEvent("template/parseusers", [
                                     'in_reply_to' => $in_reply_to,

@@ -8,6 +8,7 @@
  *   yui-compressor shell.js > shell.min.js
  */
 
+"use strict";
 
 function Template() {}
 
@@ -40,7 +41,7 @@ Template.addMessage = function(message, message_type)
 Template.addErrorMessage = function(message) { Template.addMessage(message, 'alert-danger'); }
 
 
-function addMessage(message, message_type) { Template.addMessage(); }
+function addMessage(message, message_type) { Template.addMessage(message); }
 function addErrorMessage(message) { Template.addErrorMessage(message); }
 
 /** Enable stars toggle */

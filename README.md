@@ -2,7 +2,7 @@
 
 ![Known - A social group platform](https://withknown.com/img/home/screens.png)
 
-## Installation [![Build Status](https://travis-ci.org/idno/Known.svg?branch=master)](https://travis-ci.org/idno/Known)
+## Installation 
 
 ### One-click Known sites
 
@@ -30,7 +30,6 @@ Detailed installation instructions: <http://docs.withknown.com/en/latest/install
 ### Get support
 
 * Try the open source mailing list: <https://groups.google.com/forum/#!forum/known-dev>
-* Commercial support is available: <https://withknown.com/services>
 
 ## Community links
 

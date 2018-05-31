@@ -43,10 +43,11 @@ Additionally, Known requires the following PHP components:
 + json
 + libxml
 + mbstring
-+ mongodb or mysql (depending on database backend)
++ mysql, postgresql, or sqlite (depending on database backend)
 + reflection
 + session
 + xmlrpc
++ gettext
 
 !!! note "Note" 
     You may need to restart the web server after installing these components. Known’s installer will tell you if a required module isn’t available.
