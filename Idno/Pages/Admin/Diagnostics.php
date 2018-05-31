@@ -68,21 +68,39 @@
                     'report' => [],
                 ];
 
+                // Check Known version
+                if ($remoteVersion = \Idno\Core\RemoteVersion::build()) { 
+                    if (\Idno\Core\Version::build() < $remoteVersion) {
+                        $basics['status']             = 'Failure';
+                        $basics['report']['version'] = [
+                            'status'  => 'Warning',
+                            'message' => 'Your build of Known is behind the latest version from Github, if you\'re having problems you might try updating to the latest version!<br /> <a href="https://github.com/idno/Known" target="_blank">Update now.</a>'
+                        ];
+
+                    } else {
+                        $basics['report']['version'] = [
+                            'status'  => 'Ok'
+                        ];
+                    }
+                        
+                }
+                
                 // Check SSL
                 if (!\Idno\Common\Page::isSSL()) {
                     $basics['status']             = 'Failure';
                     $basics['report']['security'] = [
                         'status'  => 'Warning',
-                        'message' => 'Your site doesn\'t seem to be loaded with HTTPS. We strongly recommend using HTTPS to make your site secure and protect your privacy.'
+                        'message' => 'Your site doesn\'t seem to be loaded over HTTPS. We strongly recommend using HTTPS to make your site secure and protect your privacy.'
                     ];
                 }
 
                 // Check PHP version 
-                if (version_compare(phpversion(), '7.0') >= 0) {
+                $phpversion = \Idno\Core\Installer::checkPHPVersion();
+                if ($phpversion == 'ok') {
                     $basics['report']['php-version'] = [
                         'status' => 'Ok'
                     ];
-                } else if (version_compare(phpversion(), '5.6') >= 0) {
+                } else if ($phpversion == 'warn') {
                     $basics['status']             = 'Failure';
                     $basics['report']['php-version'] = [
                         'status'  => 'Warning',
@@ -98,7 +116,7 @@
 
                 // Check installed extensions
                 $basics['report']['php-extensions'] = ['status' => 'Ok', 'message' => 'PHP Extension(s): '];
-                foreach (['curl', 'date', 'dom', 'gd', 'json', 'libxml', 'mbstring', 'pdo', 'reflection', 'session', 'simplexml', 'openssl'] as $extension) {
+                foreach (\Idno\Core\Installer::requiredModules() as $extension) {
                     if (!extension_loaded($extension)) {
                         $basics['report']['php-extensions']['message'] .= "$extension, ";
                         $basics['report']['php-extensions']['status'] = 'Failure';

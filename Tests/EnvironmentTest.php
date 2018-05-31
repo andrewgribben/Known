@@ -16,10 +16,11 @@
              */
             function testExtensions() {
                 echo "Checking extensions\n";
-                foreach ([
+                foreach (
                          //    'curl','date','dom','gd','json','libxml','mbstring','mysql','reflection','session','simplexml', 'openssl'
-                         'curl','date','dom','gd','json','libxml','mbstring','pdo','pdo_mysql','reflection','session','simplexml', 'openssl'
-                         ] as $extension) {
+                         //'curl','date','dom','gd','json','libxml','mbstring','pdo','pdo_mysql','reflection','session','simplexml', 'openssl'
+                         \Idno\Core\Installer::requiredModules()
+                          as $extension) {
                     echo "$extension\n";
                     $this->assertTrue(extension_loaded($extension));
                 }
@@ -32,7 +33,7 @@
              * Assert that configuration files have been installed correctly
              */
             function testKnownConfigFileExists() {
-                $this->assertTrue(file_exists(dirname(dirname(__FILE__)). '/config.ini'));
+                $this->assertTrue(file_exists(dirname(dirname(__FILE__)). '/configuration/config.ini'));
             }
             
             /** 
