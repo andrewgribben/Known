@@ -128,6 +128,12 @@
                     \Idno\Core\Idno::site()->triggerEvent('indiepub/post/success', ['page' => $this, 'object' => $entity]);
                     $this->setResponse(201);
                     header('Location: ' . $local_photo);
+                    $data =  $local_photo;
+                    header('Content-Type: application/json');
+                    $json = array(
+                      'file:' => $data
+                    );
+                    echo json_encode($json);
                 } else {
                     $this->error(400, 'cannot_save_media', 'Problem saving media');
                 }
