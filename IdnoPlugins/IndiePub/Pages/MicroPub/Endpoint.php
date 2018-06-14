@@ -121,8 +121,10 @@
 
             function postMedia()
             {
+	            
+	       
                 $id = \Idno\Entities\File::createFromFile($_FILES['file']['tmp_name'], $_FILES['file']['name'], $_FILES['file']['type']);
-
+                	            
                 if (!empty($id)) {
                     $local_photo = \Idno\Core\Idno::site()->config()->url . 'file/' . $id;
                     \Idno\Core\Idno::site()->triggerEvent('indiepub/post/success', ['page' => $this, 'object' => $entity]);
@@ -141,6 +143,8 @@
 
             function postCreate()
             {
+	            
+		           
                 // If the request is sent with a JSON content type parse the JSON input instead of form input
                 if(isset($_SERVER['CONTENT_TYPE']) && $_SERVER['CONTENT_TYPE'] == 'application/json') {
                     $input = file_get_contents('php://input');
@@ -163,16 +167,22 @@
                     $video_url   = $this->getJSONInput('video');
                     $audio_url   = $this->getJSONInput('audio');
                     $visibility  = $this->getJSONInput('visibility');
+                    
+
 
                     // Since Known does not support multiple photos or videos, use the first if more than one was given.
                     if(is_array($photo_url) && array_key_exists(0, $photo_url)) {
                         $photo_url = $photo_url[0];
+                        
+                                    
                     } elseif(is_array($photo_url) && array_key_exists('value', $photo_url)) {
                         // TODO: save the image alt text somewhere and render it in the photo
-                        // $alt_text = $photo_url['alt'];
+                        //$alt_text = $photo_url['alt'];
                         $photo_url = $photo_url['value'];
-                    }
+                   
 
+                    }
+                        					
                     if(is_array($video_url) && array_key_exists(0, $video_url)) {
                         $video_url = $video_url[0];
                     }                    
@@ -206,6 +216,8 @@
                         $long = !empty($checkin['properties']['longitude']) ? $checkin['properties']['longitude'][0] : null;
 
                         if (!empty($photo_url)) {
+	               
+	                        
                             if($this->uploadFromUrl('photo', $photo_url)) {
                                 $id = \Idno\Entities\File::createFromFile($_FILES['photo']['tmp_name'], $_FILES['photo']['name'], $_FILES['photo']['type']) ;
                                 $local_photo = \Idno\Core\Idno::site()->config()->url . 'file/' . $id;
@@ -214,8 +226,9 @@
                         }
                     }
 
-                } else {
-                    // Get details
+                } 
+                
+                else { // Get details
                     $type        = $this->getInput('h', 'entry');
                     if ($type == 'annotation') {
                         return $this->postCreateAnnotation();
@@ -235,6 +248,9 @@
                     $photo_url   = $this->getInput('photo');
                     $video_url   = $this->getInput('video');
                     $audio_url   = $this->getInput('audio');
+                    
+
+		            
                 }
 
                 if (!empty($mp_type)) {
@@ -249,12 +265,22 @@
 
                 if ($type == 'entry') {
                     $type = 'note';
-
+      
                     if (!empty($_FILES['photo'])) {
                         $type = 'photo';
-                    } else if ($photo_url) {
+                    } 
+                    
+                    else if ($photo_url) {
+	                      
                         $type      = 'photo';
                         $success   = $this->uploadFromUrl('photo', $photo_url);
+                        
+                        
+                         $id = \Idno\Entities\File::createFromFile($_FILES['photo']['tmp_name'], $_FILES['photo']['name'], $_FILES['photo']['type']) ;
+                         $local_photo = \Idno\Core\Idno::site()->config()->url . 'file/' . $id;
+                         $htmlPhoto = '<p><img style="display: block; margin-left: auto; margin-right: auto;" src="' . $local_photo . '" alt="' . $place_name . '"  /></p>';
+
+                        
                         if (!$success) {
                             \Idno\Core\Idno::site()->triggerEvent('indiepub/post/failure', ['page' => $this]);
                             $this->error(
@@ -321,6 +347,7 @@
                     }
                 }
                 if (($type == 'photo' || $type == 'video' || $type == 'audio') && empty($name) && !empty($content)) {
+	                
                     $name    = $content;
                     $content = '';
                 }
@@ -365,17 +392,30 @@
 
                 // Get an appropriate plugin, given the content type
                 if ($contentType = ContentType::getRegisteredForIndieWebPostType($type)) {
+            
                     if ($entity = $contentType->createEntity()) {
                         if (is_array($content)) {
+	    
                             $content_value = '';
                             if (!empty($content['html'])) {
                                 $content_value = $content['html'];
+  
+
                             } else if (!empty($content['value'])) {
                                 $content_value = htmlspecialchars($content['value']);
+								
+
                             }
-                        } else {
+                        } 
+                        
+                        
+                        else {
                             $content_value = htmlspecialchars($content);
+
                         }
+                        
+                        
+                        
                         if (is_array($posse_links) && count($posse_links) > 0) {
                             foreach ($posse_links as $posse_link) {
                                 if (!empty($posse_link)) {
@@ -386,6 +426,9 @@
                         }
                         //$hashtags = (empty($hashtags) ? "" : "<p>".$hashtags."</p>");
                         $htmlPhoto    = (empty($htmlPhoto) ? "" : "<p>".$htmlPhoto."</p>");
+                        
+                        
+                        
                         $this->setInput('title', $name);
                         $this->setInput('body', $htmlPhoto.$content_value);
                         $this->setInput('inreplyto', $in_reply_to);
@@ -418,7 +461,9 @@
                             \Idno\Core\Idno::site()->logging()->info("Setting syndication: $syndication");
                             $this->setInput('syndication', $syndication);
                         }
+
                         if ($entity->saveDataFromInput()) {
+
                             \Idno\Core\Idno::site()->triggerEvent('indiepub/post/success', ['page' => $this, 'object' => $entity]);
                             $this->setResponse(201);
                             header('Location: ' . $entity->getURL());
@@ -636,6 +681,7 @@
                         'size'     => filesize($tmpname),
                         'type'     => $mimetype,
                     ];
+
                 }
                 return $success;
             }

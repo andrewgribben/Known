@@ -10,8 +10,16 @@
         $tags = $this->__(['tags' => $vars['object']->tags])->draw('forms/output/tags');
     }
 
+
+
+	$body = $vars['object']->body;
+    $body = \Michelf\Markdown::defaultTransform($body);
+    
+
+
 ?>
-<p class="p-name e-content entry-content"><?= nl2br($this->parseURLs($this->parseHashtags($this->parseUsers(htmlentities($vars['object']->body, ENT_QUOTES, 'UTF-8') . $tags, $vars['object']->inreplyto)), $rel)) ?></p>
+
+<p class="p-name e-content entry-content"><?= $this->parseURLs($this->parseHashtags($this->parseUsers(html_entity_decode($body, ENT_QUOTES, 'UTF-8') . $tags, $vars['object']->inreplyto)), $rel) ?></p>
 <?php
     if (!substr_count(strtolower($vars['object']->body), '<img')) {
         echo $this->draw('entity/content/embed');

@@ -8,6 +8,7 @@
 
 		\Idno\Core\site()->template()->extendTemplate('entity/Entry/edit','Markdown/entity/Entry/edit');
 		\Idno\Core\site()->template()->extendTemplate('entity/edit/header','Markdown/header');
+
             }
 	    
         }
