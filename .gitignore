@@ -40,9 +40,7 @@ tests/_output/*
 !IdnoPlugins/Media/
 !IdnoPlugins/Photo/
 !IdnoPlugins/StaticPages/
-!IdnoPlugins/Status/
 !IdnoPlugins/Styles/
-!IdnoPlugins/Text/
 !IdnoPlugins/Webhooks/
 
 Themes/*
