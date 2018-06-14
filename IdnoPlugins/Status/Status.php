@@ -28,10 +28,11 @@
 
             function getTitle()
             {
-                $title = trim($this->getShortDescription(7));
+                $title = trim($this->getShortDescription(50));
                 if (empty($title)) {
                     $title = 'Status update';
-                } else if ($title != trim($this->getShortDescription())) $title .= ' ...';
+                } else if 
+                  ($title != trim($this->getShortDescription())) $title .= ' ...';
 
                 return $title;
             }

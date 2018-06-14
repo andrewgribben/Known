@@ -1388,7 +1388,7 @@ namespace Idno\Common {
                 return $this->short_description;
             }
 
-            $description = strip_tags($this->getDescription());
+            $description = $this->getDescription();
             $description = implode(' ', array_slice(explode(' ', $description), 0, $words));
 
             return $description;
