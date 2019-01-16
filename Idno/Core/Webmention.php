@@ -342,7 +342,6 @@
 
             function registerEventHooks()
             {
-
                 // Add webmention headers to the top of the page
                 Idno::site()->addEventHook('page/head', function (Event $event) {
                     if (!empty(site()->config()->hub)) {

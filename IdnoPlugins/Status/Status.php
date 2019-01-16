@@ -43,10 +43,12 @@
                 if (!empty($this->inreplyto)) {
                     if (is_array($this->inreplyto)) {
                         foreach ($this->inreplyto as $inreplyto) {
-                            $body = '<a href="' . $inreplyto . '" class="u-in-reply-to"></a>' . $body;
+                            /* $body = '<a href="' . $inreplyto . '" class="u-in-reply-to"></a>' . $body; */
+                            $body = $body;
                         }
                     } else {
-                        $body = '<a href="' . $this->inreplyto . '" class="u-in-reply-to"></a>' . $body;
+                        /* $body = '<a href="' . $this->inreplyto . '" class="u-in-reply-to"></a>' . $body; */
+                            $body = $body;
                     }
                 }
                 if (!empty($this->syndicatedto)) {

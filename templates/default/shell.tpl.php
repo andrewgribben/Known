@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="<?= $vars['lang']; ?>">
 <head>
-
+<meta name="google-site-verification" content="-gDzWSHn7xk5QryHLqiVJsgrU-6RmeWzf92qNDMHSg4" />
 <?php
     echo $template->draw('shell/metatags'); 
     echo $template->draw('shell/icons'); 

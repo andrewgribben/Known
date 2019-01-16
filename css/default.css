@@ -389,7 +389,7 @@ img {
 }
 
 .profile h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 200;
 }
 
@@ -413,7 +413,6 @@ img {
 }
 
 .profile .highlightedText {
-    font-size: 1.5em;
     line-height: 1.5em;
 }
 

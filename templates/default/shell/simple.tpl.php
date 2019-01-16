@@ -20,6 +20,7 @@
 ?><!doctype html>
 <html>
     <head>
+<meta name="google-site-verification" content="-gDzWSHn7xk5QryHLqiVJsgrU-6RmeWzf92qNDMHSg4" />
         <meta charset="utf-8">
         <title><?= htmlspecialchars($vars['title']); ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
